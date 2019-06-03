@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(image_transport_tutorial)
+project(my_libuvc_camera)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -104,15 +104,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-
-## SEE FOLLOWING to solve the opencv library linking issue.
-## https://answers.ros.org/question/286128/cv_bridge-tutorial-example-not-compiling-in-ros-kinetic-and-ubuntu-1604/
-
-find_package(OpenCV REQUIRED)
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES image_transport_tutorial
-  CATKIN_DEPENDS cv_bridge image_transport roscpp rospy std_msgs
+#  LIBRARIES my_libuvc_camera
+#  CATKIN_DEPENDS cv_bridge image_transport roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -129,7 +124,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/image_transport_tutorial.cpp
+#   src/${PROJECT_NAME}/my_libuvc_camera.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -140,11 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/image_transport_tutorial_node.cpp)
-
-add_executable(my_subscriber src/my_subscriber.cpp)
-target_link_libraries(my_subscriber ${OpenCV_LIBRARIES} ${catkin_LIBRARIES})
-
+# add_executable(${PROJECT_NAME}_node src/my_libuvc_camera_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -201,7 +192,7 @@ target_link_libraries(my_subscriber ${OpenCV_LIBRARIES} ${catkin_LIBRARIES})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_image_transport_tutorial.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_my_libuvc_camera.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
